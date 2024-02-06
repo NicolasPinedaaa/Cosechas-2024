@@ -5,7 +5,7 @@ rm(list = ls())
 #dev.off()
 cat("\014")
 
-setwd('C:\\Users\\nicol\\OneDrive\\Documents\\Cosechas-Banrep')
+#setwd('C:\\Users\\nicol\\OneDrive\\Documents\\Cosechas-Banrep')
 #setwd('~/Archivos/Cosechas/LaTeX/QREF/R')
 
 # Paquetes --------------------------------------------------------------------
@@ -670,7 +670,7 @@ abline(h=0)
 
 # Modelo 2---------------------------------------------------------------------
 # VAR
-if(0){
+if(1){
   #--------------  VAR con <Periodo> ---------------# 
   # Definicion del modelo 
   Per.VAR.lag     = 3
