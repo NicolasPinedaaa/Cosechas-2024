@@ -33,6 +33,7 @@ hor  = 24  # Horizonte del IRF
 h1   = 0   # Periodo donde se realiza el choque, puede ser <0> o <1> 
            # Solo se usa en Smooth-lproj
 plot.transformaciones = FALSE
+graficas_individuales = TRUE
 # Data -------------------------------------------------------------------------
 load('SG_APC-Ridge_Coefficients.RData') # Componentes APC-Ridge (periodo y cosecha)
 Data <- read_excel("Info_Camilo_Clean_2024Ene31.xlsx", sheet = "Info_Macro_M") # Datos macro
@@ -671,7 +672,7 @@ abline(h=0)
 
 # Modelo 2---------------------------------------------------------------------
 # VAR
-if(0){
+if(1){
   #--------------  VAR con <Periodo> ---------------# 
   # Definicion del modelo 
   Per.VAR.lag     = 3
@@ -743,7 +744,11 @@ if(0){
             plot.title = element_text(size = 9))
     #print(p_irf)
     IRFS[[i]] = p_irf
+    if(graficas_individuales){
+      ggsave(paste0('Modelo',Model.number,'Per',i,'.pdf'),plot=IRFS[[i]])
+    }
   }
+  
   names(IRFS) = Per.vars
   Per_plots2 = grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]], IRFS[[5]], 
                             IRFS[[6]],IRFS[[7]],
@@ -754,7 +759,7 @@ if(0){
   #                          ncol=2, top=paste0('Impulse-Response on Period Component for model ',
   #                                             Model.number),
   #                          layout_matrix=rbind(c(1,1,2,2),c(3,3,4,4),c(5,5,6,6),c(NA,7,7,NA)))
-  ggsave(paste0('PerIRF_Model',Model.number,'.pdf'), get(paste0('Per_plots',Model.number)), device = "pdf")
+  #ggsave(paste0('PerIRF_Model',Model.number,'.pdf'), get(paste0('Per_plots',Model.number)), device = "pdf")
   #--------------  VAR con <Cohort> ---------------# 
   # Definicion del modelo
   Coh.VAR.lag     = 3
@@ -832,6 +837,9 @@ if(0){
             plot.title = element_text(size = 9))
     #print(p_irf)
     IRFS[[i]] = c_irf
+    if(graficas_individuales){
+      ggsave(paste0('Modelo',Model.number,'Coh',i,'.pdf'),plot=IRFS[[i]])
+    }
   }
   names(IRFS) = Coh.vars
   Coh_plots2 = grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]], IRFS[[5]], IRFS[[6]],
