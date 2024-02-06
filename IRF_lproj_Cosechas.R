@@ -28,7 +28,7 @@ library(Matrix)
 source("Smooth_lproj_functions.R")
 
 # Parametros del modelo VAR (IRF y lproj) --------------------------------------
-lags = 5   # Rezagos del modelo VAR
+#lags = 5   # Rezagos del modelo VAR (se define dentro de cada modelo VAR)
 hor  = 24  # Horizonte del IRF    
 h1   = 0   # Periodo donde se realiza el choque, puede ser <0> o <1> 
            # Solo se usa en Smooth-lproj
@@ -385,6 +385,7 @@ grid.arrange(p_ISE_a, plot_U, p_TIB, p_spread, p_crag_a, p_NPL,nrow = 3)
 if(0){
  #--------------  VAR con <Periodo> ---------------# 
  # Definicion del modelo
+ lags = 5   # Rezagos del modelo VAR
  data_mod1   = Data_Per[,.(ISE,U,tib,spread,crag,dm_Component)]
  Per.pos_mod = rowSums(is.na(data_mod1))==0
  Per.model1  = vars::VAR(data_mod1[Per.pos_mod],p=lags)
@@ -844,7 +845,7 @@ if(0){
 }
 # Modelo 3---------------------------------------------------------------------
 # VAR
-if(1){
+if(0){
   #--------------  VAR con <Periodo> ---------------# 
   # Definicion del modelo 
   Per.VAR.lag     = 1
