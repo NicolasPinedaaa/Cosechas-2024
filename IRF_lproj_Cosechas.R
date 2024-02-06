@@ -670,7 +670,7 @@ abline(h=0)
 
 # Modelo 2---------------------------------------------------------------------
 # VAR
-if(1){
+if(0){
   #--------------  VAR con <Periodo> ---------------# 
   # Definicion del modelo 
   Per.VAR.lag     = 3
@@ -682,7 +682,7 @@ if(1){
   var.names.plots2=c("Economic Activity Index","Unemployment Rate","Sovereign debt",
                      "Inflation","Monetary Policy Interest Rate",
                      "Interest Rate Spread","Aggregate Credit")
-  
+  cat("\n modelo #", Model.number, "\n")
   #Definicion de las restricciones de cero 
   Per.N          = ncol(Per.model$y)
   Per.RESVAR.mat = matrix(1,Per.N,Per.N)
@@ -844,7 +844,7 @@ if(1){
 }
 # Modelo 3---------------------------------------------------------------------
 # VAR
-if(0){
+if(1){
   #--------------  VAR con <Periodo> ---------------# 
   # Definicion del modelo 
   Per.VAR.lag     = 1
@@ -857,6 +857,7 @@ if(0){
                      "Sovereign debt","Inflation","Monetary Policy Interest Rate",
                      "Interest Rate Spread","Aggregate Credit",
                      "Stock market returns", "Housing market returns")
+  cat("\n modelo #", Model.number, "\n")
   
   #Definicion de las restricciones de cero 
   Per.N          = ncol(Per.model$y)
@@ -922,7 +923,7 @@ if(0){
   Per_plots3 = grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]], IRFS[[5]], 
                               IRFS[[6]],IRFS[[7]],IRFS[[8]],IRFS[[9]],IRFS[[10]],
                               ncol=2,
-                            layout_matrix=rbind(c(1,2),c(3,4),c(5,6),c(7,8),c(NA,9,10,NA)))
+                            layout_matrix=rbind(c(1,2),c(3,4),c(5,6),c(7,8),c(9,10)))
   
   #Per_plots3 = grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]], IRFS[[5]], 
   #                          IRFS[[6]],IRFS[[7]],IRFS[[8]],IRFS[[9]],IRFS[[10]],
@@ -930,12 +931,12 @@ if(0){
   #                          layout_matrix=rbind(c(1,2,3,4),c(5,6,7,8),c(NA,9,10,NA)),
   #                          top=paste0('Impulse-Response on Period Component for model ',
   #                                     Model.number))
-  Per_plots3.1 = grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]], IRFS[[5]], 
-                            IRFS[[6]],ncol=2)
-  Per_plots3.2 = grid.arrange(IRFS[[7]],IRFS[[8]],IRFS[[9]],IRFS[[10]],ncol=2)
+  #Per_plots3.1 = grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]], IRFS[[5]], 
+  #                          IRFS[[6]],ncol=2)
+  #Per_plots3.2 = grid.arrange(IRFS[[7]],IRFS[[8]],IRFS[[9]],IRFS[[10]],ncol=2)
   ggsave(paste0('PerIRF_Model',Model.number,'.pdf'), get(paste0('Per_plots',Model.number)), device = "pdf")
-  ggsave(paste0('PerIRF_Model',Model.number,'_1.pdf'), get(paste0('Per_plots',Model.number,'.1')), device = "pdf")
-  ggsave(paste0('PerIRF_Model',Model.number,'_2.pdf'), get(paste0('Per_plots',Model.number,'.2')), device = "pdf")
+  #ggsave(paste0('PerIRF_Model',Model.number,'_1.pdf'), get(paste0('Per_plots',Model.number,'.1')), device = "pdf")
+  #ggsave(paste0('PerIRF_Model',Model.number,'_2.pdf'), get(paste0('Per_plots',Model.number,'.2')), device = "pdf")
   #--------------  VAR con <Cohort> ---------------# 
   # Definicion del modelo
   Coh.VAR.lag     = 1
@@ -1023,14 +1024,14 @@ if(0){
   #                                     Model.number))
   Coh_plots3 = grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]], IRFS[[5]], 
                             IRFS[[6]],IRFS[[7]],IRFS[[8]],IRFS[[9]],IRFS[[10]],
-                            layout_matrix=rbind(c(1,2,3,4),c(5,6,7,8),c(NA,9,10,NA)),
-                            nrow=3)
-  Coh_plots3.1 = grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]], IRFS[[5]], 
-                              IRFS[[6]],ncol=2)
-  Coh_plots3.2 = grid.arrange(IRFS[[7]],IRFS[[8]],IRFS[[9]],IRFS[[10]],ncol=2)
+                            layout_matrix=rbind(c(1,2),c(3,4),c(5,6),c(7,8),c(9,10)),
+                            ncol=2)
+  #Coh_plots3.1 = grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]], IRFS[[5]], 
+  #                            IRFS[[6]],ncol=2)
+  #Coh_plots3.2 = grid.arrange(IRFS[[7]],IRFS[[8]],IRFS[[9]],IRFS[[10]],ncol=2)
   ggsave(paste0('CohIRF_Model',Model.number,'.pdf'), get(paste0('Coh_plots',Model.number)), device = "pdf")
-  ggsave(paste0('CohIRF_Model',Model.number,'_1.pdf'), get(paste0('Coh_plots',Model.number,'.1')), device = "pdf")
-  ggsave(paste0('CohIRF_Model',Model.number,'_2.pdf'), get(paste0('Coh_plots',Model.number,'.2')), device = "pdf")
+  #ggsave(paste0('CohIRF_Model',Model.number,'_1.pdf'), get(paste0('Coh_plots',Model.number,'.1')), device = "pdf")
+  #ggsave(paste0('CohIRF_Model',Model.number,'_2.pdf'), get(paste0('Coh_plots',Model.number,'.2')), device = "pdf")
   
 }
 # Modelo 4---------------------------------------------------------------------
