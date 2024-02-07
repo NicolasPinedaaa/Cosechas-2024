@@ -853,7 +853,7 @@ if(0){
 }
 # Modelo 3---------------------------------------------------------------------
 # VAR
-if(1){
+if(0){
   #--------------  VAR con <Periodo> ---------------# 
   # Definicion del modelo 
   Per.VAR.lag     = 1
@@ -1123,6 +1123,9 @@ if(0){
             plot.title = element_text(size = 9))
     #print(p_irf)
     IRFS[[i]] = p_irf
+    if(graficas_individuales){
+      ggsave(paste0('Modelo',Model.number,'Per',i,'.pdf'),plot=IRFS[[i]])
+    }
   }
   names(IRFS) = Per.vars
   Per_plots4 = grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]], IRFS[[5]], IRFS[[6]],
@@ -1130,7 +1133,7 @@ if(0){
   #Per_plots4 = grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]], IRFS[[5]], IRFS[[6]],
   #                         ncol=2, top=paste0('Impulse-Response on Period Component for model ',
   #                                            Model.number))
-  ggsave(paste0('PerIRF_Model',Model.number,'.pdf'), get(paste0('Per_plots',Model.number)), device = "pdf")
+  #ggsave(paste0('PerIRF_Model',Model.number,'.pdf'), get(paste0('Per_plots',Model.number)), device = "pdf")
   
   
   
@@ -1211,14 +1214,17 @@ if(0){
             plot.title = element_text(size = 9))
     #print(p_irf)
     IRFS[[i]] = c_irf
+    if(graficas_individuales){
+      ggsave(paste0('Modelo',Model.number,'Coh',i,'.pdf'),plot=IRFS[[i]])
+    }
   }
   names(IRFS) = Coh.vars
 #  Coh_plots4 = grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]], IRFS[[5]], IRFS[[6]],
 #               ncol=2, top=paste0('Impulse-Response on Vintage Component for model ',
 #                                              Model.number))
-  Coh_plots4 = grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]], IRFS[[5]], IRFS[[6]],
-                            ncol=2)
-  ggsave(paste0('CohIRF_Model',Model.number,'.pdf'), get(paste0('Coh_plots',Model.number)), device = "pdf")
+# Coh_plots4 = grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]], IRFS[[5]], IRFS[[6]],
+#                          ncol=2)
+#ggsave(paste0('CohIRF_Model',Model.number,'.pdf'), get(paste0('Coh_plots',Model.number)), device = "pdf")
   
   
 }
@@ -1299,6 +1305,9 @@ if(0){
             plot.title = element_text(size = 9))
     #print(p_irf)
     IRFS[[i]] = p_irf
+    if(graficas_individuales){
+      ggsave(paste0('Modelo',Model.number,'Per',i,'.pdf'),plot=IRFS[[i]])
+    }
   }
   names(IRFS) = Per.vars
 #  Per_plots5 = grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]], IRFS[[5]], IRFS[[6]],
@@ -1306,14 +1315,14 @@ if(0){
 #                            layout_matrix=rbind(c(1,1,2,2,3,3),c(4,4,5,5,6,6),c(NA,7,7,8,8,NA)),
 #                            top=paste0('Impulse-Response on Period Component for model ',
 #                                       Model.number))
-  Per_plots5 = grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]], IRFS[[5]], IRFS[[6]],
-                            IRFS[[7]], IRFS[[8]], ncol=2)
-  Per_plots5.1 = grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]],
-                              ncol=2)
-  Per_plots5.2 = grid.arrange( IRFS[[5]], IRFS[[6]],IRFS[[7]], IRFS[[8]],  ncol=2)
-  ggsave(paste0('PerIRF_Model',Model.number,'.pdf'), get(paste0('Per_plots',Model.number)), device = "pdf")
-  ggsave(paste0('PerIRF_Model',Model.number,'_1.pdf'), get(paste0('Per_plots',Model.number,'.1')), device = "pdf")
-  ggsave(paste0('PerIRF_Model',Model.number,'_2.pdf'), get(paste0('Per_plots',Model.number,'.2')), device = "pdf")
+  #Per_plots5 = grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]], IRFS[[5]], IRFS[[6]],
+  #                          IRFS[[7]], IRFS[[8]], ncol=2)
+  #Per_plots5.1 = grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]],
+  #                            ncol=2)
+  #Per_plots5.2 = grid.arrange( IRFS[[5]], IRFS[[6]],IRFS[[7]], IRFS[[8]],  ncol=2)
+  #ggsave(paste0('PerIRF_Model',Model.number,'.pdf'), get(paste0('Per_plots',Model.number)), device = "pdf")
+  #ggsave(paste0('PerIRF_Model',Model.number,'_1.pdf'), get(paste0('Per_plots',Model.number,'.1')), device = "pdf")
+  #ggsave(paste0('PerIRF_Model',Model.number,'_2.pdf'), get(paste0('Per_plots',Model.number,'.2')), device = "pdf")
   
   
   
@@ -1394,6 +1403,9 @@ if(0){
             plot.title = element_text(size = 9))
     #print(p_irf)
     IRFS[[i]] = c_irf
+    if(graficas_individuales){
+      ggsave(paste0('Modelo',Model.number,'Coh',i,'.pdf'),plot=IRFS[[i]])
+    }
   }
   names(IRFS) = Coh.vars
   #Coh_plots5 = grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]], IRFS[[5]], IRFS[[6]],
@@ -1401,22 +1413,22 @@ if(0){
   #                          top=paste0('Impulse-Response on Vintage Component for model ',
   #                                     Model.number),
   #                         layout_matrix=rbind(c(1,1,2,2,3,3),c(4,4,5,5,6,6),c(NA,7,7,8,8,NA)))
-  Coh_plots5 = grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]], IRFS[[5]], IRFS[[6]],
-                            IRFS[[7]], IRFS[[8]], ncol=3,
-                            layout_matrix=rbind(c(1,1,2,2,3,3),c(4,4,5,5,6,6),c(NA,7,7,8,8,NA)))
-  Coh_plots5.1 = grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]], 
-                              ncol=2)
-  Coh_plots5.2 = grid.arrange(IRFS[[5]], IRFS[[6]],IRFS[[7]], IRFS[[8]], ncol=2)
-  ggsave(paste0('CohIRF_Model',Model.number,'.pdf'), get(paste0('Coh_plots',Model.number)), device = "pdf")
-  ggsave(paste0('CohIRF_Model',Model.number,'_1.pdf'), get(paste0('Coh_plots',Model.number,'.1')), device = "pdf")
-  ggsave(paste0('CohIRF_Model',Model.number,'_2.pdf'), get(paste0('Coh_plots',Model.number,'.2')), device = "pdf")
+  #Coh_plots5 = grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]], IRFS[[5]], IRFS[[6]],
+  #                          IRFS[[7]], IRFS[[8]], ncol=3,
+  #                          layout_matrix=rbind(c(1,1,2,2,3,3),c(4,4,5,5,6,6),c(NA,7,7,8,8,NA)))
+  #Coh_plots5.1 = grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]], 
+  #                            ncol=2)
+  #Coh_plots5.2 = grid.arrange(IRFS[[5]], IRFS[[6]],IRFS[[7]], IRFS[[8]], ncol=2)
+  #ggsave(paste0('CohIRF_Model',Model.number,'.pdf'), get(paste0('Coh_plots',Model.number)), device = "pdf")
+  #ggsave(paste0('CohIRF_Model',Model.number,'_1.pdf'), get(paste0('Coh_plots',Model.number,'.1')), device = "pdf")
+  #ggsave(paste0('CohIRF_Model',Model.number,'_2.pdf'), get(paste0('Coh_plots',Model.number,'.2')), device = "pdf")
   
   
 }
 
 # Modelo 6---------------------------------------------------------------------
 # VAR (Este modelo corresponde al <Modelo 4> del archivo de Excel <referencias>)
-if(0){
+if(1){
   #--------------  VAR con <Periodo> ---------------# 
   # Definicion del modelo 
   Per.VAR.lag     = 1
@@ -1491,6 +1503,9 @@ if(0){
             plot.title = element_text(size = 9))
     #print(p_irf)
     IRFS[[i]] = p_irf
+    if(graficas_individuales){
+      ggsave(paste0('Modelo',Model.number,'Per',i,'.pdf'),plot=IRFS[[i]])
+    }
   }
   names(IRFS) = Per.vars
   Per_plots6 = grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]], IRFS[[5]], IRFS[[6]],
@@ -1507,9 +1522,9 @@ if(0){
   Per_plots6.2 = grid.arrange(IRFS[[7]], IRFS[[8]], IRFS[[9]], IRFS[[10]], IRFS[[11]],
                               layout_matrix=rbind(c(7,7,8,8),c(9,9,10,10),c(NA,11,11,NA)),
                             ncol=2)
-  ggsave(paste0('PerIRF_Model',Model.number,'.pdf'), get(paste0('Per_plots',Model.number)), device = "pdf")
-  ggsave(paste0('PerIRF_Model',Model.number,'_1.pdf'), get(paste0('Per_plots',Model.number,'.1')), device = "pdf")
-  ggsave(paste0('PerIRF_Model',Model.number,'_2.pdf'), get(paste0('Per_plots',Model.number,'.2')), device = "pdf")
+  #ggsave(paste0('PerIRF_Model',Model.number,'.pdf'), get(paste0('Per_plots',Model.number)), device = "pdf")
+  #ggsave(paste0('PerIRF_Model',Model.number,'_1.pdf'), get(paste0('Per_plots',Model.number,'.1')), device = "pdf")
+  #ggsave(paste0('PerIRF_Model',Model.number,'_2.pdf'), get(paste0('Per_plots',Model.number,'.2')), device = "pdf")
   
   
   #--------------  VAR con <Cohort> ---------------# 
@@ -1589,6 +1604,9 @@ if(0){
             plot.title = element_text(size = 9))
     #print(p_irf)
     IRFS[[i]] = c_irf
+    if(graficas_individuales){
+      ggsave(paste0('Modelo',Model.number,'Coh',i,'.pdf'),plot=IRFS[[i]])
+    }
   }
   names(IRFS) = Coh.vars
   Coh_plots6 = grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]], IRFS[[5]], IRFS[[6]],
@@ -1606,9 +1624,9 @@ if(0){
   Coh_plots6.2 = grid.arrange(IRFS[[7]], IRFS[[8]], IRFS[[9]], IRFS[[10]], IRFS[[11]], 
                               layout_matrix=rbind(c(1,1,2,2),c(3,3,4,4),c(NA,5,5,NA)),
                               ncol=2)
-  ggsave(paste0('CohIRF_Model',Model.number,'.pdf'), get(paste0('Coh_plots',Model.number)), device = "pdf")
-  ggsave(paste0('CohIRF_Model',Model.number,'_1.pdf'), get(paste0('Coh_plots',Model.number,'.1')), device = "pdf")
-  ggsave(paste0('CohIRF_Model',Model.number,'_2.pdf'), get(paste0('Coh_plots',Model.number,'.2')), device = "pdf")
+  #ggsave(paste0('CohIRF_Model',Model.number,'.pdf'), get(paste0('Coh_plots',Model.number)), device = "pdf")
+  #ggsave(paste0('CohIRF_Model',Model.number,'_1.pdf'), get(paste0('Coh_plots',Model.number,'.1')), device = "pdf")
+  #ggsave(paste0('CohIRF_Model',Model.number,'_2.pdf'), get(paste0('Coh_plots',Model.number,'.2')), device = "pdf")
   
   
   
