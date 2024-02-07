@@ -262,7 +262,7 @@ lproj.cv <- function( obj , K, trace=1 ){
 
 ######
 #--- Grafica de loc.proc en niveles y acumulada basado en un obj Addmaer --------
-Local.Proj.LFM2 <- function(obj.Addaemer, data, h,  plot.loc.proj.acum=FALSE, sin.CI=FALSE, ggplot_param=TRUE){
+Local.Proj.LFM2 <- function(obj.Addaemer, data, h,  plot.loc.proj.acum=FALSE, sin.CI=FALSE, ggplot_param=TRUE, EN='Ridge'){
   
   Variables           = names(data)
   n.var               = length(Variables)
@@ -345,7 +345,7 @@ Local.Proj.LFM2 <- function(obj.Addaemer, data, h,  plot.loc.proj.acum=FALSE, si
       #                             top = paste0('Local projection on ',Per.o.Vint,' Component'),
       #                             layout_matrix=rbind(c(1,1,2,2),c(3,3,4,4),c(NA,5,5,NA)))
       #ggsave("Locproj_Modelo1.pdf", plot = ggplot.locproj)
-      ggsave(paste0('Locproj_',Per.o.Vint,'_modelo1.pdf'), plot = ggplot.locproj)
+      ggsave(paste0('Locproj_',Per.o.Vint,'_modelo1_',EN,'.pdf'), plot = ggplot.locproj)
     }
   }
 }

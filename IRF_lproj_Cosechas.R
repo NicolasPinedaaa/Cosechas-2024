@@ -35,7 +35,11 @@ h1   = 0   # Periodo donde se realiza el choque, puede ser <0> o <1>
 plot.transformaciones = FALSE
 graficas_individuales = TRUE
 # Data -------------------------------------------------------------------------
-load('SG_APC-Ridge_Coefficients.RData') # Componentes APC-Ridge (periodo y cosecha)
+Elastic.Network = c('Ridge','Lasso','EN')[1]
+if(Elastic.Network=='Ridge') load('SG_APC-Ridge_Coefficients.RData') # Componentes APC-Ridge (periodo y cosecha)
+if(Elastic.Network=='Lasso') load('APC-EN_Coefficients.RData')       # Componentes APC-Lasso (periodo y cosecha)
+if(Elastic.Network=='EN')    load('SG_APC-Ridge_Coefficients.RData') # Componentes APC-EN con alpha=0.5 (periodo y cosecha) 
+
 Data <- read_excel("Info_Camilo_Clean_2024Ene31.xlsx", sheet = "Info_Macro_M") # Datos macro
 #Data <- read_excel("Info_Camilo_Clean.xlsx", sheet = "Info_Macro_M") # Datos macro
 Data$Fecha = as.Date(Data$Fecha)
@@ -561,11 +565,12 @@ for(ss in VARS.names)
 }
 
 #-----  Loc.Proj Ada Acumulada (Definitivo)-----# 
-if(0){
+if(1){
   data_mod1 <- Data_Coh[,.(ISE, U, tib, spread, crag, dm_Component)]
   names(data_mod1) <- c("Economic Activity Index","Unemployment Rate",
                        "Monetary Policy Interest Rate",
                        "Interest Rate Spread","Aggregate Credit","Component")
+  lags    = 8
   Vintage = lp_lin(endog_data=data_mod1, lags_endog_lin=lags, trend=0, shock_type=0,
               confint=1.96, hor=hor)
   #plot(Vintage)
@@ -580,13 +585,15 @@ if(0){
                plot_lin(Vintage)[[34]], plot_lin(Vintage)[[35]], ncol=2,
                layout_matrix=rbind(c(1,1,2,2),c(3,3,4,4),c(NA,5,5,NA)))
   h1 = hor+1
-  Local.Proj.LFM2(obj.Addaemer=Vintage, data=data_mod1, h=h1,  plot.loc.proj.acum=TRUE, sin.CI=TRUE)
+  Local.Proj.LFM2(obj.Addaemer=Vintage, data=data_mod1, h=h1,  
+                  plot.loc.proj.acum=TRUE, sin.CI=TRUE, EN= )
 
 #Period
   data_mod1 <- Data_Per[,.(ISE, U, tib, spread, crag, dm_Component)]
   names(data_mod1) <- c("Economic Activity Index","Unemployment Rate",
                       "Monetary Policy Interest Rate",
                       "Interest Rate Spread","Aggregate Credit","Component")
+lags   = 5
 Period = lp_lin(endog_data=data_mod1, lags_endog_lin=lags, trend=0, shock_type=0,
             confint=1.96, hor=hor)
 #plot(Period)
@@ -601,7 +608,7 @@ grid.arrange(plot_lin(Period)[[31]],  plot_lin(Period)[[32]], plot_lin(Period)[[
 #             plot_lin(lp)[[34]], plot_lin(lp)[[35]], plot_lin(lp)[[36]], ncol=2,
 #             top=paste0('Local Projection for Impulse-Response for model 1'))
 h1 = hor+1
-Local.Proj.LFM2(obj.Addaemer=Period, data=data_mod1, h=h1,  plot.loc.proj.acum=TRUE, sin.CI=TRUE)
+Local.Proj.LFM2(obj.Addaemer=Period, data=data_mod1, h=h1,  plot.loc.proj.acum=TRUE, sin.CI=TRUE, EN=Elastic.Network)
 }
 
 #----- Local Projections a mano Acumulada (no dio igual)-------#
@@ -1428,7 +1435,7 @@ if(0){
 
 # Modelo 6---------------------------------------------------------------------
 # VAR (Este modelo corresponde al <Modelo 4> del archivo de Excel <referencias>)
-if(1){
+if(0){
   #--------------  VAR con <Periodo> ---------------# 
   # Definicion del modelo 
   Per.VAR.lag     = 1
