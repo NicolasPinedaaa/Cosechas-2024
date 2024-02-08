@@ -35,10 +35,10 @@ h1   = 0   # Periodo donde se realiza el choque, puede ser <0> o <1>
 plot.transformaciones = FALSE
 graficas_individuales = TRUE
 # Data -------------------------------------------------------------------------
-Elastic.Network = c('Ridge','Lasso','EN')[1]
-if(Elastic.Network=='Ridge') load('SG_APC-Ridge_Coefficients.RData') # Componentes APC-Ridge (periodo y cosecha)
-if(Elastic.Network=='Lasso') load('APC-EN_Coefficients.RData')       # Componentes APC-Lasso (periodo y cosecha)
-if(Elastic.Network=='EN')    load('SG_APC-Ridge_Coefficients.RData') # Componentes APC-EN con alpha=0.5 (periodo y cosecha) 
+Elastic.Network = c('Ridge','Lasso','EN')[3]
+if(Elastic.Network=='Ridge') load('SG_APC-Ridge_Coefficients.RData')  # Componentes APC-Ridge (periodo y cosecha)
+if(Elastic.Network=='Lasso') load('APC-lasso_Coefficients.RData')     # Componentes APC-Lasso (periodo y cosecha)
+if(Elastic.Network=='EN')    load('APC-EN_Coefficients.RData')        # Componentes APC-EN con alpha=0.5 (periodo y cosecha) 
 
 Data <- read_excel("Info_Camilo_Clean_2024Ene31.xlsx", sheet = "Info_Macro_M") # Datos macro
 #Data <- read_excel("Info_Camilo_Clean.xlsx", sheet = "Info_Macro_M") # Datos macro
@@ -586,7 +586,7 @@ if(1){
                layout_matrix=rbind(c(1,1,2,2),c(3,3,4,4),c(NA,5,5,NA)))
   h1 = hor+1
   Local.Proj.LFM2(obj.Addaemer=Vintage, data=data_mod1, h=h1,  
-                  plot.loc.proj.acum=TRUE, sin.CI=TRUE, EN= )
+                  plot.loc.proj.acum=TRUE, sin.CI=TRUE, EN=Elastic.Network)
 
 #Period
   data_mod1 <- Data_Per[,.(ISE, U, tib, spread, crag, dm_Component)]
@@ -608,7 +608,8 @@ grid.arrange(plot_lin(Period)[[31]],  plot_lin(Period)[[32]], plot_lin(Period)[[
 #             plot_lin(lp)[[34]], plot_lin(lp)[[35]], plot_lin(lp)[[36]], ncol=2,
 #             top=paste0('Local Projection for Impulse-Response for model 1'))
 h1 = hor+1
-Local.Proj.LFM2(obj.Addaemer=Period, data=data_mod1, h=h1,  plot.loc.proj.acum=TRUE, sin.CI=TRUE, EN=Elastic.Network)
+Local.Proj.LFM2(obj.Addaemer=Period, data=data_mod1, h=h1,  
+                plot.loc.proj.acum=TRUE, sin.CI=TRUE, EN=Elastic.Network)
 }
 
 #----- Local Projections a mano Acumulada (no dio igual)-------#
