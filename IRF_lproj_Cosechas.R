@@ -327,6 +327,7 @@ var.names.model.3  = c("vix", "ISE", "U", "def.fis", "inf", "tib", "spread", "cr
 var.names.model.4  = c("ISE", 'ICC', "U", "tib", "spread", "crag",  'dm_Component')
 var.names.model.5  = c("vix","ISE","rsal", "U", "tib", "spread", "crag",  'ExRat' , 'dm_Component')
 var.names.model.6  = c("vix", "ISE", 'ICC', "rsal", "U", "def.fis", "inf", "tib", "spread", "crag", 'ExRat', 'dm_Component') 
+var.names.model.8  = c("ISE", "rsal", "tib", "spread", "crag", 'dm_Component')
   
 # Graficas Paper Variables Macro y NPL -----------------------------------------
 if(0){
@@ -565,7 +566,7 @@ for(ss in VARS.names)
 }
 
 #-----  Loc.Proj Ada Acumulada (Definitivo)-----# 
-if(1){
+if(0){
   data_mod1 <- Data_Coh[,.(ISE, U, tib, spread, crag, dm_Component)]
   names(data_mod1) <- c("Economic Activity Index","Unemployment Rate",
                        "Monetary Policy Interest Rate",
@@ -746,9 +747,10 @@ if(0){
       geom_ribbon(aes(x=H,ymin=lower,ymax=upper),fill="skyblue",alpha=.5) +
       geom_line(aes(x=H,y=mean),size=1.3) +
       geom_hline(yintercept=0) +
-      labs(x='Months', y=" ", title=paste0('Panel ', letras[i]," ", var.names.plots2[i])) +
+      #labs(x='Months', y=" ", title=paste0('Panel ', letras[i]," ", var.names.plots2[i])) +
+      labs(x='Months', y=" ") +
       scale_x_continuous(limits = c(0,hor), breaks=seq(0,hor,3))+
-      theme(axis.title = element_text(size = 6),axis.text = element_text(size = 6),
+      theme(axis.title = element_text(size = 8),axis.text = element_text(size = 8),
             plot.title = element_text(size = 9))
     #print(p_irf)
     IRFS[[i]] = p_irf
@@ -839,9 +841,10 @@ if(0){
       geom_ribbon(aes(x=H,ymin=lower,ymax=upper),fill="skyblue",alpha=.5) +
       geom_line(aes(x=H,y=mean),size=1.3) +
       geom_hline(yintercept=0) +
-      labs(x='Months', y=" ", title=paste0('Panel ', letras[i]," ", var.names.plots2[i])) +
-      scale_x_continuous(limits = c(0,hor), breaks=seq(0,hor,3)) +
-      theme(axis.title = element_text(size = 6),axis.text = element_text(size = 6),
+      #labs(x='Months', y=" ", title=paste0('Panel ', letras[i]," ", var.names.plots2[i])) +
+      labs(x='Months', y=" ") +
+      scale_x_continuous(limits = c(0,hor), breaks=seq(0,hor,3))+
+      theme(axis.title = element_text(size = 8),axis.text = element_text(size = 8),
             plot.title = element_text(size = 9))
     #print(p_irf)
     IRFS[[i]] = c_irf
@@ -929,9 +932,9 @@ if(0){
       geom_ribbon(aes(x=H,ymin=lower,ymax=upper),fill="skyblue",alpha=.5) +
       geom_line(aes(x=H,y=mean),size=1.3) +
       geom_hline(yintercept=0) +
-      labs(x='Months', y=" ", title=paste0('Panel ', letras[i]," ", var.names.plots3[i])) +
+      labs(x='Months', y=" ") +
       scale_x_continuous(limits = c(0,hor), breaks=seq(0,hor,3))+
-      theme(axis.title = element_text(size = 6),axis.text = element_text(size = 6),
+      theme(axis.title = element_text(size = 8),axis.text = element_text(size = 8),
             plot.title = element_text(size = 9))
     #print(p_irf)
     IRFS[[i]] = p_irf
@@ -1028,9 +1031,9 @@ if(0){
       geom_ribbon(aes(x=H,ymin=lower,ymax=upper),fill="skyblue",alpha=.5) +
       geom_line(aes(x=H,y=mean),size=1.3) +
       geom_hline(yintercept=0) +
-      labs(x='Months', y=" ", title=paste0('Panel ', letras[i]," ", var.names.plots3[i])) +
+      labs(x='Months', y=" ") +
       scale_x_continuous(limits = c(0,hor), breaks=seq(0,hor,3))+
-      theme(axis.title = element_text(size = 6),axis.text = element_text(size = 6),
+      theme(axis.title = element_text(size = 8),axis.text = element_text(size = 8),
             plot.title = element_text(size = 9))
     #print(p_irf)
     IRFS[[i]] = c_irf
@@ -1125,9 +1128,9 @@ if(0){
       geom_ribbon(aes(x=H,ymin=lower,ymax=upper),fill="skyblue",alpha=.5) +
       geom_line(aes(x=H,y=mean),size=1.3) +
       geom_hline(yintercept=0) +
-      labs(x='Months', y=" ", title=paste0('Panel ', letras[i]," ", var.names.plots4[i])) +
+      labs(x='Months', y=" ") +
       scale_x_continuous(limits = c(0,hor), breaks=seq(0,hor,3))+
-      theme(axis.title = element_text(size = 6),axis.text = element_text(size = 6),
+      theme(axis.title = element_text(size = 8),axis.text = element_text(size = 8),
             plot.title = element_text(size = 9))
     #print(p_irf)
     IRFS[[i]] = p_irf
@@ -1216,9 +1219,9 @@ if(0){
       geom_ribbon(aes(x=H,ymin=lower,ymax=upper),fill="skyblue",alpha=.5) +
       geom_line(aes(x=H,y=mean),size=1.3) +
       geom_hline(yintercept=0) +
-      labs(x='Months', y=" ", title=paste0('Panel ', letras[i]," ", var.names.plots4[i])) +
+      labs(x='Months', y=" ") +
       scale_x_continuous(limits = c(0,hor), breaks=seq(0,hor,3))+
-      theme(axis.title = element_text(size = 6),axis.text = element_text(size = 6),
+      theme(axis.title = element_text(size = 8),axis.text = element_text(size = 8),
             plot.title = element_text(size = 9))
     #print(p_irf)
     IRFS[[i]] = c_irf
@@ -1307,9 +1310,9 @@ if(0){
       geom_ribbon(aes(x=H,ymin=lower,ymax=upper),fill="skyblue",alpha=.5) +
       geom_line(aes(x=H,y=mean),size=1.3) +
       geom_hline(yintercept=0) +
-      labs(x='Months',y=" ", title=paste0('Panel ', letras[i]," ", var.names.plots5[i])) +
+      labs(x='Months', y=" ") +
       scale_x_continuous(limits = c(0,hor), breaks=seq(0,hor,3))+
-      theme(axis.title = element_text(size = 6),axis.text = element_text(size = 6),
+      theme(axis.title = element_text(size = 8),axis.text = element_text(size = 8),
             plot.title = element_text(size = 9))
     #print(p_irf)
     IRFS[[i]] = p_irf
@@ -1405,9 +1408,9 @@ if(0){
       geom_ribbon(aes(x=H,ymin=lower,ymax=upper),fill="skyblue",alpha=.5) +
       geom_line(aes(x=H,y=mean),size=1.3) +
       geom_hline(yintercept=0) +
-      labs(x='Months', y=" ", title=paste0('Panel ', letras[i]," ", var.names.plots5[i])) +
+      labs(x='Months', y=" ") +
       scale_x_continuous(limits = c(0,hor), breaks=seq(0,hor,3))+
-      theme(axis.title = element_text(size = 6),axis.text = element_text(size = 6),
+      theme(axis.title = element_text(size = 8),axis.text = element_text(size = 8),
             plot.title = element_text(size = 9))
     #print(p_irf)
     IRFS[[i]] = c_irf
@@ -1436,7 +1439,7 @@ if(0){
 
 # Modelo 6---------------------------------------------------------------------
 # VAR (Este modelo corresponde al <Modelo 4> del archivo de Excel <referencias>)
-if(0){
+if(1){
   #--------------  VAR con <Periodo> ---------------# 
   # Definicion del modelo 
   Per.VAR.lag     = 1
@@ -1505,9 +1508,9 @@ if(0){
       geom_ribbon(aes(x=H,ymin=lower,ymax=upper),fill="skyblue",alpha=.5) +
       geom_line(aes(x=H,y=mean),size=1.3) +
       geom_hline(yintercept=0) +
-      labs(x='Months', y=" ", title=paste0('Panel ', letras[i]," ", var.names.plots6[i])) +
+      labs(x='Months', y=" ") +
       scale_x_continuous(limits = c(0,hor), breaks=seq(0,hor,3))+
-      theme(axis.title = element_text(size = 6),axis.text = element_text(size = 6),
+      theme(axis.title = element_text(size = 8),axis.text = element_text(size = 8),
             plot.title = element_text(size = 9))
     #print(p_irf)
     IRFS[[i]] = p_irf
@@ -1606,9 +1609,9 @@ if(0){
       geom_ribbon(aes(x=H,ymin=lower,ymax=upper),fill="skyblue",alpha=.5) +
       geom_line(aes(x=H,y=mean),size=1.3) +
       geom_hline(yintercept=0) +
-      labs(x='Months', y=" ", title=paste0('Panel ', letras[i]," ", var.names.plots6[i])) +
+      labs(x='Months', y=" ") +
       scale_x_continuous(limits = c(0,hor), breaks=seq(0,hor,3))+
-      theme(axis.title = element_text(size = 6),axis.text = element_text(size = 6),
+      theme(axis.title = element_text(size = 8),axis.text = element_text(size = 8),
             plot.title = element_text(size = 9))
     #print(p_irf)
     IRFS[[i]] = c_irf
@@ -1638,4 +1641,183 @@ if(0){
   
   
   
+}
+
+# Modelo 8---------------------------------------------------------------------
+# VAR - IFR
+if(0){
+  #--------------  VAR con <Periodo> ---------------# 
+  # Definicion del modelo
+  lags = 5   # Rezagos del modelo VAR
+  data_mod1   = Data_Per[,.(ISE,U,tib,spread,crag,dm_Component)]
+  Per.pos_mod = rowSums(is.na(data_mod1))==0
+  Per.model1  = vars::VAR(data_mod1[Per.pos_mod],p=lags)
+  var.names.plots1=c("Economic Activity Index","Unemployment Rate",
+                     "Monetary Policy Interest Rate",
+                     "Interest Rate Spread","Aggregate Credit","Component")
+  
+  #Definicion de las restricciones de cero 
+  Per.N          <- ncol(Per.model1$y)
+  Per.RESVAR.mat <- matrix(1,Per.N,Per.N)
+  Per.RESVAR.mat[1:(Per.N-1),Per.N] <- 0
+  Per.rest.N.L <- cbind(matrix(0, Per.N, Per.N*lags), 1)
+  for (i in 1:Per.N) {
+    for (j in 1:Per.N) {
+      if (Per.RESVAR.mat[i,j]==1) Per.rest.N.L[i, seq(j, Per.N*lags-(Per.N-j), Per.N)] <- 1
+    }
+  }
+  #Modelo restringido
+  Per.res.model <- restrict(Per.model1, method='man', resmat=Per.rest.N.L)
+  #summary(Per.res.model)
+  
+  # Res-tests
+  if(1){
+    #Residual's hypothesis tests------------
+    VAR_dif   = Per.res.model
+    VAR_htest = matrix(NA, nrow=1, ncol=3)
+    colnames(VAR_htest) <- c('norm', 'Arch','autocorr')
+    #----Normality
+    VAR_htest[1] <- round(normality.test(VAR_dif)$jb.mul$JB$p.value, 4)
+    #----Homoskedasticity
+    VAR_htest[2] <- round(arch.test(VAR_dif, lags.multi = VAR_dif$p+1)$arch.mul$p.value, 4)
+    #-----Autocorrelation
+    VAR_htest[3] <-round(serial.test(VAR_dif, lags.pt = trunc(VAR_dif$obs/4+1),
+                                     type = 'PT.asymptotic')$serial$p.value, 4)
+    print(VAR_htest)
+  }
+  
+  Per.vars  = colnames(Per.res.model$y)
+  Per.lags  = max(as.numeric(substring(colnames(Per.res.model$datamat)[grep(Per.vars[1],colnames(Per.res.model$datamat))],nchar(Per.vars[1])+3,nchar(Per.vars[1])+10)),na.rm=T)
+  Per.comp  = Per.vars[grep('Component',Per.vars)]
+  Per.N     = length(Per.vars)
+  Per.TT    = nrow(Per.res.model$y)
+  Per.dates = Data_Per[Per.pos_mod]$Fechas
+  
+  # IRF del modelo restringido
+  Per.irf  <- irf(Per.res.model,cumulative=T,n.ahead=hor,ci=0.9)
+  #------ Prueba de grafica del IRF totat------#
+  if(0){
+    x11()
+    par(mfrow=c(6,6), mar=c(5-3, 4-3, 4-3, 2-1) + 0.1)
+    VARS.names =  names(Per.irf$irf)
+    for(ss in VARS.names)
+      for (rr in VARS.names){
+        plot.ts(Per.irf$irf[[ss]][,rr],main=paste0('Ch en ',ss,'Rta en ',rr),
+                cex.main=0.9, col='tomato', lwd=2) #IRF donde se choca <ISE>
+        abline(h=0, col='black', lwd=2)
+      }
+  }
+  #Este ejercicio indica que se chocan las var.macro y se mira rta en el componente 
+  #--------------------------------------------#
+  
+  #IRF del modelo restringido chocando las var macro y rta en el componente  
+  IRFS = list()
+  for (i in seq_along(Per.vars)) {
+    mean  <- as.numeric(Per.irf$irf[[Per.vars[i]]][,Per.comp])
+    upper <- as.numeric(Per.irf$Upper[[Per.vars[i]]][,Per.comp])
+    lower <- as.numeric(Per.irf$Lower[[Per.vars[i]]][,Per.comp])
+    dist  <- (upper-lower)/2
+    upper <- mean + dist
+    lower <- mean - dist
+    
+    Per.data_irf <- data.table(H=0:hor,mean,lower,upper)
+    
+    p_irf <- ggplot(Per.data_irf) +
+      geom_ribbon(aes(x=H,ymin=lower,ymax=upper),fill="skyblue",alpha=.5) +
+      geom_line(aes(x=H,y=mean),size=1.3) +
+      geom_hline(yintercept=0) +
+      labs(y='Percentage Points',x='Months', 
+           title=paste0('Panel ', letras[i]," ", var.names.plots1[i])) +
+      scale_x_continuous(limits = c(0,hor), breaks=seq(0,hor,3))
+    #print(p_irf)
+    IRFS[[i]] = p_irf
+  }
+  names(IRFS) = Per.vars
+  grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]], IRFS[[5]], 
+               nrow=3, top=paste0('Impulse-Response on Period Component for model 1'),
+               layout_matrix=rbind(c(1,1,2,2),c(3,3,4,4),c(NA,5,5,NA)))
+  
+  #--------------  VAR con <Cohort> ---------------# 
+  
+  # Definicion del modelo 
+  Coh.VAR.lag     = 8  
+  VAR.names.model = var.names.model.1  
+  Coh.data_mod    = Data_Coh[, ..VAR.names.model] #Sup: la ult. var es el componente
+  Coh.pos_mod     = rowSums(is.na(Coh.data_mod))==0
+  Coh.model       = vars::VAR(Coh.data_mod[Coh.pos_mod],p=Coh.VAR.lag,exogen=Data_Coh[Coh.pos_mod,outlier_vars,with=F])
+  outlier_effects = coefficients(Coh.model)$dm_Component[outlier_vars,'Estimate']
+  Data_Coh[,eval(parse(text=paste0('outlier_effect:=',paste(paste0(outlier_vars,'*',outlier_effects),collapse='+'))))]
+  Data_Coh[,dm_Component_ori:=dm_Component]
+  Data_Coh[,dm_Component:=dm_Component-outlier_effect]
+  
+  #plot(Data_Coh[,.(Fecha,dm_Component_ori)],t='l')
+  #lines(Data_Coh[,.(Fecha,dm_Component)],col=2)
+  
+  Coh.data_mod = Data_Coh[, ..VAR.names.model]
+  Coh.pos_mod  = rowSums(is.na(Coh.data_mod))==0
+  Coh.model    = vars::VAR(Coh.data_mod[Coh.pos_mod],p=Coh.VAR.lag)
+  
+  #Definicion de las restricciones de cero 
+  Coh.N          = ncol(Coh.model$y)
+  Coh.RESVAR.mat = matrix(1,Coh.N,Coh.N)
+  Coh.RESVAR.mat[1:(Coh.N-1),Coh.N] <- 0
+  Coh.rest.N.L <- cbind(matrix(0, Coh.N, Coh.N*Coh.model$p), 1)
+  for (i in 1:Coh.N) {
+    for (j in 1:Coh.N) {
+      if (Coh.RESVAR.mat[i,j]==1) Coh.rest.N.L[i, seq(j, Coh.N*Coh.model$p-(Coh.N-j), Coh.N)] <- 1
+    }
+  }
+  Coh.res.model <- restrict(Coh.model, method='man', resmat=Coh.rest.N.L)
+  #summary(Coh.res.model)
+  
+  # Res-tests
+  if(1){
+    #Residual's hypothesis tests------------
+    VAR_dif   = Coh.res.model
+    VAR_htest = matrix(NA, nrow=1, ncol=3)
+    colnames(VAR_htest) <- c('norm', 'Arch','autocorr')
+    #----Normality
+    VAR_htest[1] <- round(normality.test(VAR_dif)$jb.mul$JB$p.value, 4)
+    #----Homoskedasticity
+    VAR_htest[2] <- round(arch.test(VAR_dif, lags.multi = VAR_dif$p+1)$arch.mul$p.value, 4)
+    #-----Autocorrelation
+    VAR_htest[3] <-round(serial.test(VAR_dif, lags.pt = trunc(VAR_dif$obs/4+1),
+                                     type = 'PT.asymptotic')$serial$p.value, 4)
+    print(VAR_htest)
+  }
+  
+  Coh.vars  <- colnames(Coh.res.model$y)
+  Coh.lags  <- max(as.numeric(substring(colnames(Coh.res.model$datamat)[grep(Coh.vars[1],colnames(Coh.res.model$datamat))],nchar(Coh.vars[1])+3,nchar(Coh.vars[1])+10)),na.rm=T)
+  Coh.comp  <- Coh.vars[grep('Component',Coh.vars)]
+  Coh.N     <- length(Coh.vars)
+  Coh.TT    <- nrow(Coh.res.model$y)
+  Coh.dates <- Data_Coh[Coh.pos_mod]$Fechas
+  
+  # IRF del modelo restringido
+  IRFS = list()
+  Coh.irf  <- irf(Coh.res.model, cumulative=T, n.ahead=hor, ci=0.9)
+  for (i in seq_along(Coh.vars)) {
+    mean  <- as.numeric(Coh.irf$irf[[Coh.vars[i]]][,Coh.comp])
+    upper <- as.numeric(Coh.irf$Upper[[Coh.vars[i]]][,Coh.comp])
+    lower <- as.numeric(Coh.irf$Lower[[Coh.vars[i]]][,Coh.comp])
+    dist  <- (upper-lower)/2
+    upper <- mean + dist
+    lower <- mean - dist
+    
+    Coh.data_irf <- data.table(H=0:hor,mean,lower,upper)
+    
+    c_irf <- ggplot(Coh.data_irf) +
+      geom_ribbon(aes(x=H,ymin=lower,ymax=upper),fill="skyblue",alpha=.5) +
+      geom_line(aes(x=H,y=mean),size=1.3) +
+      geom_hline(yintercept=0) +
+      labs(y='Percentage Points',x='Months', 
+           title=paste0('Panel ', letras[i]," ", var.names.plots1[i])) +
+      scale_x_continuous(limits = c(0,hor), breaks=seq(0,hor,3))
+    #print(p_irf)
+    IRFS[[i]] = c_irf
+  }
+  names(IRFS) = Coh.vars
+  grid.arrange(IRFS[[1]], IRFS[[2]], IRFS[[3]], IRFS[[4]], IRFS[[5]],
+               nrow=3, top=paste0('Impulse-Response on Vintage Component for model 1'),
+               layout_matrix=rbind(c(1,1,2,2),c(3,3,4,4),c(NA,5,5,NA)))
 }
