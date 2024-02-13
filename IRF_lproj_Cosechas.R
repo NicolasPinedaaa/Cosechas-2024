@@ -1722,7 +1722,7 @@ if(0){
     #print(p_irf)
     IRFS[[i]] = p_irf
     if(graficas_individuales){
-      ggsave(paste0('Modelo',Model.number,'Per',i,'.pdf'),plot=IRFS[[i]])
+      ggsave(paste0('Modelo',Model.number,'_aPer',i,'.pdf'),plot=IRFS[[i]])
     }
   }
   
@@ -1803,12 +1803,12 @@ if(0){
     #print(p_irf)
     IRFS[[i]] = p_irf
     if(graficas_individuales){
-      ggsave(paste0('Modelo',Model.number,'Coh',i,'.pdf'),plot=IRFS[[i]])
+      ggsave(paste0('Modelo',Model.number,'_aCoh',i,'.pdf'),plot=IRFS[[i]])
     }
   }
 }
 # Modelo 7b--------------------------------------------------------------------------------------
-if(0){
+if(1){
   #--------------  VAR con <Periodo> ---------------# 
   # Definicion del modelo 
   Per.VAR.lag     = 12
@@ -1880,7 +1880,7 @@ if(0){
     #print(p_irf)
     IRFS[[i]] = p_irf
     if(graficas_individuales){
-      ggsave(paste0('Modelo',Model.number,'Per',i,'.pdf'),plot=IRFS[[i]])
+      ggsave(paste0('Modelo',Model.number,'_bPer',i,'.pdf'),plot=IRFS[[i]])
     }
   }  
   #--------------  VAR con <Cohort> ---------------# 
@@ -1960,7 +1960,7 @@ if(0){
     #print(p_irf)
     IRFS[[i]] = p_irf
     if(graficas_individuales){
-      ggsave(paste0('Modelo',Model.number,'Coh',i,'.pdf'),plot=IRFS[[i]])
+      ggsave(paste0('Modelo',Model.number,'_bCoh',i,'.pdf'),plot=IRFS[[i]])
     }
   }
 }
@@ -2613,7 +2613,7 @@ if(0){
 
 # Modelo 12 (Model 2 w/o Sovereign Debt)---------------------------------------------------------------------
 # VAR
-if(1){
+if(0){
   #--------------  VAR con <Periodo> ---------------# 
   # Definicion del modelo 
   Per.VAR.lag     = 4
