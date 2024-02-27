@@ -33,7 +33,8 @@ hor  = 24  # Horizonte del IRF
 h1   = 0   # Periodo donde se realiza el choque, puede ser <0> o <1> 
            # Solo se usa en Smooth-lproj
 plot.transformaciones = FALSE
-graficas_individuales = FALSE
+#Si TRUE se generan graficas individuales:
+graficas_individuales = TRUE
 # Data -------------------------------------------------------------------------
 Elastic.Network = c('Ridge','Lasso','EN')[1] #Esta opc se debe dejar en <Ridge> y solo se cambia para <Local.Projections> o modelos 9 y 10
 if(Elastic.Network=='Ridge') load('SG_APC-Ridge_Coefficients.RData')  # Componentes APC-Ridge (periodo y cosecha)
